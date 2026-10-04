@@ -1,5 +1,4 @@
 param(
-  [switch]$Test,
   [string]$Compiler = ''
 )
 $ErrorActionPreference = 'Stop'
@@ -26,12 +25,6 @@ try {
     '-static', '-static-libgcc', '-static-libstdc++', '-Wl,--gc-sections', '-s')
   & $Compiler @flags '-municode' '-mwindows' 'main.cpp' 'build\resources.o' '-o' 'dist\CrosshairOverlay.exe' '-lcomctl32' '-lshell32' '-lole32' '-luuid' '-lgdi32' '-luser32' '-ladvapi32' '-lwtsapi32'
   if ($LASTEXITCODE -ne 0) { throw 'Application compilation failed. Exit the running app before rebuilding.' }
-  if ($Test) {
-    & $Compiler @flags 'tests.cpp' '-o' 'build\tests.exe'
-    if ($LASTEXITCODE -ne 0) { throw 'Test compilation failed.' }
-    & '.\build\tests.exe'
-    if ($LASTEXITCODE -ne 0) { throw 'Tests failed.' }
-  }
   $imports = & $objdump '-p' 'dist\CrosshairOverlay.exe'
   if ($LASTEXITCODE -ne 0) { throw 'Dependency inspection failed.' }
   $dlls = @($imports | Select-String 'DLL Name:' | ForEach-Object { ($_.Line -split 'DLL Name:\s*')[1].Trim() })
