@@ -5,7 +5,8 @@ Built for Windows 11 only. If it works on your machine, great; if not, tough luc
 
 ## Use
 
-Run **dist\CrosshairOverlay.exe**. The first manual launch turns on launch at sign-in and opens Settings;
+Download **CrosshairOverlay.exe** from the [Releases page](https://github.com/dropbop/crosshair-overlay/releases),
+or [build it yourself](#build). Run it; the first manual launch turns on launch at sign-in and opens Settings;
 sign-in launches stay quietly in the tray. The crosshair is visible on every fresh launch.
 
 - **Shift + Alt + Z** shows or hides the crosshair.
@@ -53,3 +54,7 @@ imports anything but Windows system DLLs, and keeps it under 1 MB. Exit the runn
 ## Remove
 
 Uncheck **Launch at sign-in**, choose **Exit**, delete the exe, and optionally delete **%LOCALAPPDATA%\CrosshairOverlay**.
+
+## License
+
+[MIT](LICENSE)
