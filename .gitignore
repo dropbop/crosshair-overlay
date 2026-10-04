@@ -1,0 +1,6 @@
+build/
+dist/
+
+# Generated alongside the original one-shot; kept locally, not tracked.
+tests.cpp
+VERIFICATION.md
